@@ -1,0 +1,53 @@
+
+/*
+ * 'common' style under this site.
+ */
+
+
+/* 互換性のため */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  margin-left: 10px;
+  background-color: #FFF;
+  color: #000;
+}
+
+
+/* リンク色の指定 */
+a { text-decoration: underline }
+a:link { color: #00DF1F }
+a:visited { color: #700 }
+a:hover {
+  background-color: #EEE;
+
+  /*
+   * 透明度 85%
+  filter: alpha(opacity=85);
+  -moz-opacity:0.85;
+  opacity:0.85;
+  */
+}
+
+#title {
+  margin-left: 30px;
+  display: block;
+  background-color: #FFF;
+  color: #000;
+}
+
+dl#title dt {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+dl#title dt:first-letter {
+  font-size: 64px;
+}
+dl#title dd {
+  font-size: 14px;
+  margin-left: 20px;
+}
+

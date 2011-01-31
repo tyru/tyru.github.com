@@ -1,0 +1,131 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="tyru" />
+    <meta name="generator" content="gVim" />
+
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/list.css" />
+    <link rel="stylesheet" href="../css/code.css" />
+
+    <script src="../js/base.js"></script>
+    <!-- <script src="../js/hide_def.js"></script> -->
+
+    <title>misc</title>
+
+  </head>
+  <body>
+
+
+    <br />
+    <br />
+    <br />
+
+    <dl id="title">
+      <dt>小ネタ</dt>
+      <dd>Perl関連の小ネタとかその他いろいろ</dd>
+    </dl>
+
+    <br />
+    <br />
+    <br />
+
+    <dl class="list"> 
+      <dt class="def">[Perl][ワンライナー]カレントディレクトリの全てのディレクトリ・ファイルを小文字にする</dt>
+      <dd class="about">
+          <pre> $ perl -e "rename $_, lc $_   for glob '*'" </pre>
+      </dd>
+
+      <hr />
+      <dt class="def">[Perl][ワンライナー][*sh]環境変数の中で重複する要素を削除する</dt>
+      <dd class="about">
+<pre>
+function rmdupenv() {
+    if [ $# = 0 ]; then return; fi
+    local env="$1"
+    local sep="$2"
+
+    eval "export $env=$(perl -e 'my ($e, $s) = (shift, shift || q(:)); #\
+                            for(split $s, $ENV{$e}) { #\
+                                $h{$_} or $h{$_}=++$i #\
+                            } #\
+                            $,=$s; #\
+                            %h=reverse %h; #\
+                            print map { $h{$_} } #\
+                                  sort { $a <=> $b } keys %h' \
+                        $env $sep)"
+}
+
+echo $PATH       # => /bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/home/tyru/bin:/usr/local/bin/
+rmdupenv PATH    # => /bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/home/tyru/bin
+export TEST="foo-bar-baz-foo-baz"
+rmdupenv TEST -  # => foo-bar-baz
+</pre>
+      </dd>
+
+      <hr />
+      <dt class="def">[Perl][ワンライナー]カレントディレクトリ以下の全てのファイルの改行コードをCRLF → LFにする</dt>
+      <dd class="about">
+
+      <p>Linux系なら</p>
+      <code>
+        $ find -type f -exec perl -pe 's/\015\012$/\012/' {} \;
+      </code>
+
+      <p>WindowsでなんらかのPerl環境がある場合は</p>
+<pre>
+$ # find2perlは多分インストールされてるはず
+$ find2perl -type f -exec perl -pe 's/\015\012$/\012/' {} \; | perl
+</pre>
+
+      </dd>
+
+      <hr />
+      <dt class="def">[Perl][ワンライナー]行中の数字でソート</dt>
+      <dd class="about">
+      <code>
+        $ skkdic-count /usr/share/skk/SKK-JISYO.* | perl -e 'print sort{do{$a=~/.*D(d+)/;$1}&lt;=&gt;do{$b=~/.*D(d+)/;$1}}&lt;&gt;'
+</code>
+      <br />
+      こっちのがいいような<br />
+      <code>
+        $ skkdic-count /usr/share/skk/SKK-JISYO.* | perl -e 'print sort { ($A, $B) = map { /.*D(d+).*/; $1 } ($a, $b); $A &lt;=&gt; $B } &lt;&gt;'
+</code>
+      </dd>
+    </dl>
+
+
+    <br />
+    <br />
+    随時追加予定?
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <br />
+    <br />
+    <br />
+
+    <a href="../" id="home">TOP</a>
+
+    <br />
+    <br />
+    <br />
+
+
+  </body>
+</html>
+

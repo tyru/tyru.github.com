@@ -1,0 +1,54 @@
+
+/*
+ * for writing some document.
+ * NOTE: not used yet.
+ */
+
+.footnote:before {
+  content: "\"";
+}
+.footnote:after {
+  content: "\"";
+}
+
+body {
+  background-color: #AA7;
+}
+
+
+dl#title {
+  background-color: #EEF0B0;
+  padding: 15px;
+}
+dl#title dt {
+  font-size: 24px;
+  font-weight: bold;
+}
+dl#title dd {
+  font-size: 12px;
+}
+
+/* それぞれのセクション */
+dl dt {
+  font-size: 30px;
+  font-style: bold;
+  background-color: #EEF0B0;
+
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+dl dd {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+dl dd ol {
+  margin-left: 30px;
+}
+
+pre, code {
+  display: inline-block;
+  color: #FFF;
+  background-color: #000;
+  margin: 10px 0px;
+  padding: 10px;
+}

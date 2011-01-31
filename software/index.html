@@ -1,0 +1,148 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+    <meta name="keywords" content="Perl" />
+    <meta name="description" content="自作スクリプトとかを適当に置いていくところ。" />
+    <meta name="author" content="tyru" />
+    <meta name="generator" content="gVim" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/software.css" />
+
+    <link rel="stylesheet" href="../css/list.css" />
+    <link rel="stylesheet" href="../css/code.css" />
+
+    <!-- js -->
+    <script src="../js/base.js"></script>
+    <!-- <script src="../js/hide_def.js"></script> -->
+
+
+    <title>ソフトウェア</title>
+
+  </head>
+  <body>
+
+    <!--
+    TODO
+    ・IE対応
+    -->
+
+    <br />
+    <br />
+    <br />
+
+    <dl id="title">
+      <dt>ソフトウェア</dt>
+      <dd>
+      恥ずかしいものが多いですが減るもんでもないのでとりあえず置いてあるものたち。ライセンスはパブリックライセンス。<br />
+      ※今は<a href="http://github.com/tyru/">github</a>で公開しています。<br />
+      </dd>
+    </dl>
+
+    <br />
+    <br />
+    <br />
+
+
+    <!-- class list begin -->
+    <dl class="list">
+
+      <!-- def begin -->
+      <dt class="def">
+      [Windows][C++]
+      <a href="los/LOS-1.0.zip">LOS 1.0</a>
+      <a href="los/los.cpp">ソース</a>
+      </dt>
+      <dd class="about" name="about">
+      起動時、一度にソフトが起動しないように、スケジュール実行させることができます。<br />
+      作った理由は同じ機能を持つソフトがGUI付きだったのですが<br />
+      CUIプログラムにして設定ファイルをエディタで編集した方が使い易いと思ったからです。<br />
+      元はPerlスクリプトでしたがC++で書き直しました。<br />
+      そのスクリプトがlaunch_on_startup.plだったのでこんな名前に。
+      </dd>
+      <!-- def end -->
+
+      <hr />
+
+      <!-- def begin -->
+      <dt class="def">
+      [Windows][Perl][Strawberry Perl] <a href="shrpath/shrpath_1.0.zip">shrpath.bat 1.0</a>
+      </dt>
+      <dd class="about" name="about">
+      外国のソフトとかだと何かのパスに空白があると実行できなかったり...<br />
+      そういうときにこれで空白を含まないパスを生成すれば結構うまくいったりします。<br />
+      　あとREADME.TXTに書き忘れたのですが<br />
+      引数を与えずに実行するとカレントディレクトリのパスが表示されます。
+      </dd>
+      <!-- def end -->
+
+      <hr />
+
+      <!-- def begin -->
+      <dt class="def">
+      [Windows][Perl][Strawberry Perl] <a href="autotunes/autotunes_1.09.zip">AutoTunes 1.09</a>
+      </dt>
+      <dd class="about" name="about">
+      iTunesをCLIから操作してみるテスト。<br />
+      再生、先送り、音量調整、最大化、ミニプレーヤ化、システムトレイに格納、とか基本的(?)な機能を持つ。<br />
+      bashスクリプトみたいに、ファイルへ操作を書いて実行することもできる。<br />
+
+      <dl class="todo">
+        <dt>TODO</dt>
+        <dd>(Migemo)検索</dd>
+        <dd>大量の文字で画面が流れないように工夫する</dd>
+        <dd>Term::Shell使う</dd>
+        <dd>パースして即実行、じゃなくて一旦コマンドを返すようにする</dd>
+        <dd>一旦全部パースして行うコマンドのコードリファレンスをスタック変数にpushした後実行(ここまでやるならちゃんと構文木を生成する？)</dd>
+      </dl>
+      </dd>
+      <!-- def end -->
+
+      <hr />
+
+      <!-- def begin -->
+      <dt class="def">
+      [Windows][Perl][Strawberry Perl] <a href="glvs/glvs.txt">AutoUpdater for Vimperator Plugins 1.0</a> <a href="http://d.hatena.ne.jp/tyru/20081103/1225719551">紹介記事</a>
+      </dt>
+      <dd class="about" name="about">
+      <s>VimperatorというFirefox拡張機能向けのプラグインを自動アップデートする</s><br />
+      今ではpluginManager.jsというプラグインを使うことで自動アップデートできます<br />
+      (現在このpluginManager.jsを使わせてもらってるので
+      自分でも現在この上のスクリプトが正常に動くかどうか分かりません :) )<br />
+
+      <br />
+      具体的には<br />
+      <code>autocmd VimperatorEnter .* pluginmanager update</code><br />
+      と.vimperatorrcに書くことで起動時に自動アップデートができます。<br />
+      </dd>
+      <!-- def end -->
+
+    </dl>
+    <!-- class list end -->
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+
+    <a href="../" id="home">TOP</a>
+
+    <br />
+    <br />
+    <br />
+
+  </body>
+</html>
+

@@ -1,0 +1,15 @@
+
+/*
+ * for embedding code
+ */
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+code, pre {
+  background-color: #CCC;
+  border: 1px solid #000;
+  margin: 1em 0px;
+}

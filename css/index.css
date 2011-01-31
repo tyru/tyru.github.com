@@ -1,0 +1,178 @@
+
+/*
+ * for /index.html
+ */
+
+
+
+
+/******** misc. ********/
+* { /* for compatibility */
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: #001F00;
+  color: #00DF1F;
+}
+
+hr { /* noshade */
+  border: 0 none; 
+  height: 2px; 
+  background-color: #00DF1F;
+  color: #00AC0A;
+}
+
+/* link color */
+a { text-decoration: underline }
+a:link { color: #00DF1F }
+a:visited { color: #700 }
+a:hover {
+  color: #001F00;
+  background-color: #00DF1F;
+}
+
+/*
+ * Surround elements with borders.
+ */
+  #lastdate,
+  #option_status
+{
+  margin: 5px;
+  padding: 5px;
+  background-color: #001F00;
+  color: #00DF1F;
+  border: solid 1px #00DF1F;
+}
+
+
+
+/*
+ * Some useful classes.
+ */
+.small {
+  font-size: small;
+}
+.hide {
+  display: none;
+}
+.box-title {
+  display: block;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+
+  font-size: 17px;
+  font-weight: bold;
+  border-bottom: dashed 1px #00DF1F;
+}
+.reverse-color {
+  color: #001F00;
+  background-color: #00DF1F;
+}
+dl.dd-add-bot-sp dd {
+  margin-bottom: 5px;
+}
+dl.dd-add-left-sp dd {
+  margin-left: 20px;
+}
+
+
+
+#main_box {
+  z-index: 1;
+}
+
+#the_frame.preview {
+  display: block;
+  height: 600;
+}
+/******** misc. - end ********/
+
+
+
+/******** lastdate ********/
+#lastdate {
+  text-align: right;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+/******** lastdate - end ********/
+
+
+
+/******** title ********/
+#title {
+  font-size: 24px;
+}
+/*
+#title:first-letter {
+  font-size: 64px;
+}
+*/
+/******** title - end ********/
+
+
+
+/******** #main_box ********/
+#main_box li {
+  display: inline-block;
+  float: left;
+  margin: 0px 20px;
+}
+/******** #main_box - end ********/
+
+
+
+/******** main_menu ********/
+#main_menu {
+}
+#main_menu div,dl {
+  margin-bottom: 30px;
+  /*
+  display: inline-block;
+  margin-right: 15px;
+  float: left;
+  */
+}
+/******** main_menu - end ********/
+
+
+
+/******** info_box ********/
+#info_box dl {
+}
+/******** info_box - end ********/
+
+/******** message ********/
+#message ul { /* for list circle */
+  padding-left: 25px;
+}
+/******** message - end ********/
+
+/******** profile ********/
+#profile dl dt {
+  display: block;
+}
+/******** profile - end ********/
+
+/******** whatchanged ********/
+#whatchanged {
+}
+/******** whatchanged - end ********/
+
+
+
+/******** friendfeed ********/
+#friendfeed {
+}
+/******** friendfeed - end ********/
+
+
+
+/******** option_status ********/
+#option_status {
+  /* display: none; */
+  display: inline-block;
+}
+/******** option_status - end ********/

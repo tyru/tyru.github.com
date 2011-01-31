@@ -1,0 +1,213 @@
+#!/usr/bin/env perl
+# vim:ft=perl:
+use strict;
+use warnings;
+use utf8;
+
+use DateTime;
+use File::Basename qw(basename);
+use File::Copy qw(copy);
+use FileHandle;
+use Getopt::Long;
+use LWP::Simple qw(get);
+use List::Util qw(first);
+use Path::Class ();
+use Perl6::Say;
+use Pod::Usage;
+use URI;
+use Web::Scraper;
+
+
+
+# 引数指定めんどいならこれを直接変えてもいい
+my $debug      = 0;
+my $backup     = 0;
+my $all        = 0;
+my $only_check = 0;
+my $trunk      = 0;
+
+my $vimp_plugin_dir = Path::Class::dir($ENV{HOME}, 'vimperator', 'plugin');
+
+my $trunk_uri  = 'http://coderepos.org/share/browser/lang/javascript/vimperator-plugins/trunk';
+my $branch_uri = 'http://coderepos.org/share/browser/lang/javascript/vimperator-plugins/branches/1.2';
+
+
+
+
+# 引数
+my ($coderepos_uri, $needhelp);
+GetOptions(
+    all     => \$all,
+    backup  => \$backup,
+    check   => \$only_check,
+    debug   => \$debug,
+    help    => \$needhelp,
+    trunk   => \$trunk,
+) or pod2usage(-verbose => 2, -exitval => 0);
+pod2usage(-verbose => 2, -exitval => 0)   if($needhelp);
+
+if ($trunk) {
+    $coderepos_uri = URI->new($trunk_uri);
+} else {
+    $coderepos_uri = URI->new($branch_uri);
+}
+
+
+STDOUT->autoflush(1);
+STDERR->autoflush(1);
+
+print "connecting [$coderepos_uri]...";
+
+# プラグインの名前と更新日時をスクレイプ
+my $res = scraper {
+    process 'td.name>a.file',
+            'files[]' => {
+                'name' => 'TEXT',
+                'href' => '@href'
+            };
+    process 'td.name>a.dir',
+            'dirs[]'   => 'TEXT';
+    process 'td.age>a.timeline',
+            'updated_times[]'  => '@href';
+}->scrape($coderepos_uri);
+print "Done.\n\n";
+
+
+for (1..@{$res->{dirs}}) {
+    shift @{$res->{updated_times}}
+}
+my %plugin = map {
+    $_->{name}, { href => $_->{href}, updated_time => shift @{$res->{updated_times}} }
+} @{$res->{files}};
+
+
+
+# キャッシュとか
+# my $locale = DateTime::TimeZone->new(name => 'local');
+my $locale = DateTime::TimeZone->new(name => 'JST-9');
+my $plugin_dir = $vimp_plugin_dir->file('*.js');
+my @script_names = keys %plugin;
+my (%updates, @err);
+
+foreach my $script_path (glob $plugin_dir) {
+    my $script = basename $script_path;
+
+    my $matched = first { defined $_ && $script eq $_ } @script_names;
+    if (not $matched) {    # プラグインがCodereposに見つからなかった
+        push @err, $script;
+        next;
+    }
+    $script = $matched;
+
+    # コミットされた時間を切り抜き
+    my $ret = $plugin{$script}{updated_time} =~
+            m#\?from=(\d+)-(\d+)-(\d+)T(\d{2})#;
+    my ($year, $month, $day, $hour) = ($1, $2, $3, $4);
+
+
+    # それぞれのオブジェクトを作成
+    my $commited_day = DateTime->new(year => $year, month => $month,
+                                     day  => $day,  hour  => $hour,
+                                     time_zone => $locale);
+    my $downloaded_day = DateTime->from_epoch(epoch => (stat $script_path)[9]);
+
+    # 経過時間を計算
+    my $passed = $downloaded_day - $commited_day;
+
+    # 新しいのがあった
+    if($all || $passed->is_negative) {
+        say "$script will be updated...";
+        $updates{$script_path} = $plugin{$script}{href};
+    }
+}
+print "\n";
+
+
+# チェックのみ
+if ($only_check) {
+    if (%updates) {
+        say "The newer version is available.";
+        foreach my $fn (keys %updates) {
+            say "  " . basename $fn;
+        }
+    } else {
+        say "There were no updates.";
+    }
+    exit;
+}
+
+
+if (%updates) {
+    my @success;
+
+    foreach my $fn (keys %updates) {
+        my $base_fn = basename $fn;
+
+        # $fnにはスクリプトへのフルパスが入る
+        say "updating $base_fn...";
+        sleep 2;     # 待つ
+
+        my $res = scraper {
+            process 'div#altlinks>ul>li.last>a', 'download' => '@href';
+        }->scrape($updates{$fn});
+
+        if ($backup) {
+            my $macro_dir = $vimp_plugin_dir->parent->subdir('macros')->absolute;
+            mkdir $macro_dir    unless -d $macro_dir;
+            my $old_file = $vimp_plugin_dir->file($base_fn)->absolute;
+
+            # File::Copy::copy は$!にsetするらしい
+            copy($vimp_plugin_dir->file($base_fn),
+                 $macro_dir->file($base_fn)) or warn $!;
+        }
+
+        my $FH = FileHandle->new("> $fn");
+        unless (defined $FH) {
+            warn "error: Couldn't open $fn...\n";
+            next;
+        }
+        binmode($FH);
+        $FH->print(get($res->{download}));
+        $FH->close;
+
+        # 成功
+        push @success, $base_fn;
+    }
+
+    printf "\n\nupdated %d files:\n", scalar @success;
+    foreach my $script (@success) {
+        # this is not(ry
+        say "  $script";
+    }
+
+} else {
+    say "There were no updates.";
+}
+
+
+if (@err) {
+    warn "\n\nNot found in coderepos:\n";
+    warn "   $_\n"     for @err;
+}
+
+
+__END__
+
+=head1 NAME
+
+check_vimpe_update.pl - auto update vimperator plugins from coderepos
+
+
+=head1 SYNOPSIS
+
+$ perl check_vimpe_update.pl [-abht]
+
+
+=head1 OPTIONS
+
+    a, all          update all vimperator plugins even if not outdated.
+    b, backup       backup your script in $HOME/Vimperator/macro directory.
+    c, check        only check. show available version if newer version is available.
+    h, help         this help text.
+    t, trunk        download from trunk version.
+

@@ -1,0 +1,15 @@
+
+/*
+ * for /software/*
+ */
+
+/* TODO コメント */
+dl.todo {
+  margin-top: 1em;
+  color: purple;
+  font-size: smaller;
+}
+dl.todo dd {
+  margin-left: 15px;
+  text-decoration: underline;
+}

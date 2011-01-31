@@ -1,0 +1,28 @@
+
+/*
+ * manage list style
+ */
+
+dl.list dt.def {
+}
+dl.list dd.about {
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+ul.list li.def, ol.list li.def {
+}
+ul.list li.about, ol.list li.about {
+}
+
+dl.list hr {
+  margin: 10px 0px;
+  width: 250px;
+  text-align: left;
+
+  border: 0 none; 
+  height: 1px; 
+  color: #EEE;
+  background-color: #EEE;
+}
+
