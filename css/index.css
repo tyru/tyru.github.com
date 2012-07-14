@@ -5,7 +5,7 @@ body {
 }
 
 /* link color */
-a { text-decoration: underline }
+a { text-decoration: none; }
 a:link { color: #000; }
 a:visited { color: #700; }
 a:hover {
@@ -13,7 +13,7 @@ a:hover {
   background-color: #AAA;
 }
 
-#top_box {
+#main_menu {
   margin-top: 100px;
 }
 
@@ -55,4 +55,27 @@ dl.menu > dt {
 }
 dl.menu > dd {
   margin-left: 10px;
+}
+
+
+/* hint */
+.hint {
+  display: none;
+
+  /* color, size, etc. */
+  font-size: smaller;
+  color: #aaa;
+}
+a:hover + .hint {
+  display: inline;
+}
+a:hover + .hint:before {
+  content: " --> ";
+}
+
+
+/* click */
+a:active {
+  position: relative;
+  top: 1px;
 }
