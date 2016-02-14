@@ -56,18 +56,53 @@ dl.menu > dd {
 
 
 /* hint */
-.hint {
-  display: none;
+.hint div {
+  /* display: none; */
+  display: inline;
+  opacity: 0;
 
   /* color, size, etc. */
   font-size: smaller;
+  color: #FFF;
+}
+.hint:hover div {
+  opacity: 1;
   color: #aaa;
+  -webkit-transition: all 0.2s linear;
 }
-a:hover + .hint {
-  display: inline;
-}
-a:hover + .hint:before {
+.hint:hover div:before {
   content: " --> ";
+}
+
+.github-bg-icon {
+  background-image: url("/img/github-logo.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.hatebu-bg-icon {
+  background-image: url("/img/hatebu-logo.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.hatenablog-bg-icon {
+  background-image: url("/img/hatenablog-logo.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.twitter-bg-icon {
+  background-image: url("/img/twitter-logo.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.tumblr-bg-icon {
+  background-image: url("/img/tumblr-logo.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.vimorg-bg-icon {
+  background-image: url("/img/vimorg-logo.png");
+  background-repeat: no-repeat;
+  background-position: right top;
 }
 
 
