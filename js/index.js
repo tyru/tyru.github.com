@@ -1,14 +1,12 @@
 window.onload = (function() {
     'use strict';
 
-    var BGIMG_TARGET_ID = 'bg-icon';
-    function showIconOnHover(linkId, bgImgAddClass) {
-        var $bgImg = document.getElementById(BGIMG_TARGET_ID);
+    function showDescAndIconOnHover(linkId, bgImgId) {
+        var $bgImg = document.getElementById(bgImgId);
         var $link = document.getElementById(linkId);
         var $linkDesc = document.getElementById(linkId + "-desc");
 
         var onMouseOver = (function onMouseOver() {
-            $bgImg.classList.add(bgImgAddClass);
             $bgImg.classList.remove('invisible');
             $linkDesc.classList.remove('invisible');
             return false;
@@ -16,7 +14,6 @@ window.onload = (function() {
         var onMouseOut = (function onMouseOut() {
             $linkDesc.classList.add('invisible');
             $bgImg.classList.add('invisible');
-            $bgImg.classList.remove(bgImgAddClass);
             return false;
         });
 
@@ -25,14 +22,13 @@ window.onload = (function() {
     }
 
     // On mouseover/mouseout.
-    // * Load & Show background images on mouseover.
+    // * Show background images on mouseover.
     // * Show descriptions on mouseover.
-    // * Toggle 'invisible' class.
-    showIconOnHover('github', 'github-bg-icon');
-    showIconOnHover('hatenablog', 'hatenablog-bg-icon');
-    showIconOnHover('hatebu', 'hatebu-bg-icon');
-    showIconOnHover('twitter', 'twitter-bg-icon');
-    showIconOnHover('tumblr-tyru', 'tumblr-bg-icon');
-    showIconOnHover('tumblr-inthesea', 'tumblr-bg-icon');
-    showIconOnHover('vimorg', 'vimorg-bg-icon');
+    showDescAndIconOnHover('github', 'github-bg-icon');
+    showDescAndIconOnHover('hatebu', 'hatebu-bg-icon');
+    showDescAndIconOnHover('hatenablog', 'hatenablog-bg-icon');
+    showDescAndIconOnHover('twitter', 'twitter-bg-icon');
+    showDescAndIconOnHover('tumblr-tyru', 'tumblr-bg-icon');
+    showDescAndIconOnHover('tumblr-inthesea', 'tumblr-bg-icon');
+    showDescAndIconOnHover('vimorg', 'vimorg-bg-icon');
 });

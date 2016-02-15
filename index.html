@@ -24,17 +24,27 @@
       <div id="main_menu">
 
         <dl id="links" class="menu">
-          <span id="bg-icon" class="invisible trans-opacity-0_6"></span>
+          <span id="bg-icon">
+            <!-- TODO: Why can't I specify 'trans-opacity-0_6' to '#bg-icon' ?
+                 It will white out entire page...
+            -->
+            <img src="/img/github-logo.png" id="github-bg-icon" class="invisible trans-opacity-0_6">
+            <img src="/img/hatebu-logo.png" id="hatebu-bg-icon" class="invisible trans-opacity-0_6">
+            <img src="/img/hatenablog-logo.png" id="hatenablog-bg-icon" class="invisible trans-opacity-0_6">
+            <img src="/img/twitter-logo.png" id="twitter-bg-icon" class="invisible trans-opacity-0_6">
+            <img src="/img/tumblr-logo.png" id="tumblr-bg-icon" class="invisible trans-opacity-0_6">
+            <img src="/img/vimorg-logo.png" id="vimorg-bg-icon" class="invisible trans-opacity-0_6">
+          </span>
           <dt>
             links
             <span class="desc">
-              <span id="github-desc" class="invisible trans-opacity-0_3">my code here</span>
-              <span id="hatenablog-desc" class="invisible trans-opacity-0_3">hatena blog</span>
-              <span id="hatebu-desc" class="invisible trans-opacity-0_3">hatena bookmark</span>
-              <span id="twitter-desc" class="invisible trans-opacity-0_3">twitter</span>
-              <span id="tumblr-tyru-desc" class="invisible trans-opacity-0_3">most active tumblelog</span>
-              <span id="tumblr-inthesea-desc" class="invisible trans-opacity-0_3">my most favorite tumblelog</span>
-              <span id="vimorg-desc" class="invisible trans-opacity-0_3">my plugins uploaded to vim.org</span>
+              <span id="github-desc" class="invisible">my code here</span>
+              <span id="hatenablog-desc" class="invisible">hatena blog</span>
+              <span id="hatebu-desc" class="invisible">hatena bookmark</span>
+              <span id="twitter-desc" class="invisible">twitter</span>
+              <span id="tumblr-tyru-desc" class="invisible">most active tumblelog</span>
+              <span id="tumblr-inthesea-desc" class="invisible">my most favorite tumblelog</span>
+              <span id="vimorg-desc" class="invisible">my plugins uploaded to vim.org</span>
             </span>
           </dt>
           <dd>
@@ -71,10 +81,9 @@
       </div>
 
       <div id="footer">
-        Last Change: 15-Feb-2016.<br />
+        Last Change: 16-Feb-2016.<br />
         Since: 2009.<br />
       </div>
-
 
   </body>
 </html>

@@ -4,15 +4,12 @@ body {
   color: #000;
 }
 
-/* link color */
+/* link colors */
 a { text-decoration: none; }
 a:link { color: #000; }
 a:visited { color: #700; }
-a:hover {
-  text-decoration: underline;
-}
-/* click */
-a:active {
+a:hover { text-decoration: underline }
+a:active {  /* click */
   position: relative;
   top: 1px;
 }
@@ -20,7 +17,6 @@ a:active {
 #main_menu {
   margin-top: 100px;
 }
-
 
 dl#profile > dd > dl > dt {
 }
@@ -35,20 +31,16 @@ dl#profile > dd > dl > dd {
   width: 500px;
 }
 
-
 #footer {
   margin-top: 50px;
   text-align: center;
   font-size: x-small;
 }
 
-
-/* class */
-
 dl.menu > dt {
   padding-bottom: 5px;
   margin-bottom: 10px;
-  font-size: 17px;
+  font-size: large;
   font-weight: bold;
   border-bottom: solid 1px rgba(0, 0, 0, .2);
 }
@@ -62,39 +54,16 @@ dl#links dd a {
 
 
 #bg-icon {
-  position: absolute;
+  position: relative;
+  left: 100px;
   width: 500px;
   height: 500px;
   z-index: -1;
 }
-
-.github-bg-icon {
-  background-image: url("/img/github-logo.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-}
-.hatebu-bg-icon {
-  background-image: url("/img/hatebu-logo.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-}
-.hatenablog-bg-icon {
-  background-image: url("/img/hatenablog-logo.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-}
-.twitter-bg-icon {
-  background-image: url("/img/twitter-logo.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-}
-.tumblr-bg-icon {
-  background-image: url("/img/tumblr-logo.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-}
-.vimorg-bg-icon {
-  background-image: url("/img/vimorg-logo.png");
+#bg-icon > * {
+  position: absolute;
+  width: 500px;
+  height: 500px;
   background-repeat: no-repeat;
   background-position: right top;
 }
@@ -110,17 +79,10 @@ dl#links dd a {
   left: 0px;
   width: 300px;
 
-  font-size: smaller;
+  font-size: small;
   color: #aaa;
 }
 
-.trans-opacity-0_3 {
-  transition: opacity 0.3s linear;
-  -moz-transition: opacity 0.3s linear;
-  -webkit-transition: opacity 0.3s linear;
-  -o-transition: opacity 0.3s linear;
-  -ms-transition: opacity 0.3s linear;
-}
 .trans-opacity-0_6 {
   transition: opacity 0.6s linear;
   -moz-transition: opacity 0.6s linear;
