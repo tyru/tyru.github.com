@@ -48,10 +48,10 @@ dl.menu > dd {
   margin-left: 10px;
 }
 
-dl#links dd a {
+dl#links dd a,
+dl#old-content dd a {
   display: block;
 }
-
 
 #bg-icon {
   position: relative;
