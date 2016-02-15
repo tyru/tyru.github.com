@@ -11,11 +11,15 @@ a:visited { color: #700; }
 a:hover {
   text-decoration: underline;
 }
+/* click */
+a:active {
+  position: relative;
+  top: 1px;
+}
 
 #main_menu {
   margin-top: 100px;
 }
-
 
 
 dl#profile > dd > dl > dt {
@@ -32,13 +36,11 @@ dl#profile > dd > dl > dd {
 }
 
 
-
 #footer {
   margin-top: 50px;
   text-align: center;
   font-size: x-small;
 }
-
 
 
 /* class */
@@ -54,28 +56,16 @@ dl.menu > dd {
   margin-left: 10px;
 }
 
-
-/* hint */
-.hint div {
-  /* display: none; */
-  display: inline;
-  opacity: 0;
-
-  /* color, size, etc. */
-  font-size: smaller;
-  color: #FFF;
+dl#links dd a {
+  display: block;
 }
-.hint:hover div {
-  opacity: 1;
-  color: #aaa;
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  -ms-transition: all 0.2s linear;
-}
-.hint:hover div:before {
-  content: " --> ";
+
+
+#bg-icon {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  z-index: -1;
 }
 
 .github-bg-icon {
@@ -109,9 +99,42 @@ dl.menu > dd {
   background-position: right top;
 }
 
-
-/* click */
-a:active {
+.desc {
   position: relative;
-  top: 1px;
+  top: 5px;
+  left: 30px;
+}
+.desc * {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+
+  font-size: smaller;
+  color: #aaa;
+}
+
+.trans-opacity-0_3 {
+  transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -webkit-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+  -ms-transition: opacity 0.3s linear;
+}
+.trans-opacity-0_6 {
+  transition: opacity 0.6s linear;
+  -moz-transition: opacity 0.6s linear;
+  -webkit-transition: opacity 0.6s linear;
+  -o-transition: opacity 0.6s linear;
+  -ms-transition: opacity 0.6s linear;
+}
+
+.invisible {
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  /* IE lt 8 */
+  filter: alpha(opacity=0);
+  /* IE 8 */
+  -ms-filter: "alpha(opacity=0)";
 }
