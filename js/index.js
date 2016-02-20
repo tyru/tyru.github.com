@@ -96,7 +96,7 @@ window.onload = (function() {
             }
             break;
         case 27:    // Escape: Clear current selection.
-            handleEscape($allLinks, selectingLink);
+            selectingLink = handleEscape($allLinks, selectingLink);
             break;
         case 74:    // 'J': Select the next below link.
             selectingLink = handleJK($allLinks, selectingLink, +1);
