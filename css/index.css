@@ -124,6 +124,17 @@ section#profile > dd > dl > dd {
   -ms-filter: "alpha(opacity=0)";
 }
 
+/* ======== .selected-link ======== */
+.selected-link {
+  background-color: gray;
+}
+a:link.selected-link {
+  color: white;
+}
+a:visited.selected-link {
+  color: white;
+}
+
 /* ======== .clearfix ======== */
 .clearfix:before,
 .clearfix:after {

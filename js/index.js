@@ -31,4 +31,55 @@ window.onload = (function() {
     showDescAndIconOnHover('tumblr-tyru', 'tumblr-bg-icon');
     showDescAndIconOnHover('tumblr-inthesea', 'tumblr-bg-icon');
     showDescAndIconOnHover('vimorg', 'vimorg-bg-icon');
+
+    // Vi-like keybindings.
+    // Move across <a> links.
+    // Enter to open it.
+    var selectingLink = -1;
+    window.onkeydown = (function onkeydown(e) {
+        // Add & Remove highlights
+        function highlightCurrent($allLinks, selectingLink) {
+            var i;
+            for (i = 0; i < $allLinks.length; ++i) {
+                if (i === selectingLink) {
+                    $allLinks[i].classList.add('selected-link');
+                } else {
+                    $allLinks[i].classList.remove('selected-link');
+                }
+            }
+        }
+
+        var ch, $allLinks;
+        e = e || event;
+        ch = String.fromCharCode(e.keyCode);
+        console.log("key: '" + ch + "' (" + e.keyCode + ")");
+        $allLinks = document.querySelectorAll('#links a, #old-content a');
+        // Handle keys
+        switch (e.keyCode) {
+        case 13:    // Enter: Open current selected link.
+            if (0 <= selectingLink && selectingLink < $allLinks.length) {
+                $allLinks[selectingLink].classList.remove('selected-link');
+                setTimeout(function () {
+                    $allLinks[selectingLink].classList.add('selected-link');
+                    $allLinks[selectingLink].click();
+                }, 50);
+            }
+            break;
+        case 27:    // Escape: Clear current selection.
+            selectingLink = -1;
+            break;
+        case 74:    // 'J': Select the next below link.
+            selectingLink++;
+            selectingLink = Math.max(selectingLink, 0);
+            selectingLink = Math.min(selectingLink, $allLinks.length - 1);
+            highlightCurrent($allLinks, selectingLink);
+            break;
+        case 75:    // 'K': Select the next above link.
+            selectingLink--;
+            selectingLink = Math.max(selectingLink, 0);
+            selectingLink = Math.min(selectingLink, $allLinks.length - 1);
+            highlightCurrent($allLinks, selectingLink);
+            break;
+        }
+    });
 });
