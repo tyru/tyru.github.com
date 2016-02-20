@@ -48,6 +48,36 @@ window.onload = (function() {
                 }
             }
         }
+        function fireEvent($el, eventName) {
+            var event = document.createEvent("MouseEvents");
+            event.initEvent(eventName, false, true);
+            $el.dispatchEvent(event);
+        }
+        function handleJK($allLinks, selectingLink, step) {
+            var prevLink = selectingLink;
+            selectingLink += step;
+            selectingLink = Math.max(selectingLink, 0);
+            selectingLink = Math.min(selectingLink, $allLinks.length - 1);
+            // Add & Remove highlights
+            highlightCurrent($allLinks, selectingLink);
+            // Fire mouseover/mouseout events.
+            if (0 <= prevLink && prevLink < $allLinks.length) {
+                fireEvent($allLinks[prevLink], 'mouseout');
+            }
+            fireEvent($allLinks[selectingLink], 'mouseover');
+            return selectingLink;
+        }
+        function handleEscape($allLinks, selectingLink) {
+            var prevLink = selectingLink;
+            selectingLink = -1;
+            // Add & Remove highlights
+            highlightCurrent($allLinks, selectingLink);
+            // Fire mouseover/mouseout events.
+            if (0 <= prevLink && prevLink < $allLinks.length) {
+                fireEvent($allLinks[prevLink], 'mouseout');
+            }
+            return selectingLink;
+        }
 
         var ch, $allLinks;
         e = e || event;
@@ -66,19 +96,13 @@ window.onload = (function() {
             }
             break;
         case 27:    // Escape: Clear current selection.
-            selectingLink = -1;
+            handleEscape($allLinks, selectingLink);
             break;
         case 74:    // 'J': Select the next below link.
-            selectingLink++;
-            selectingLink = Math.max(selectingLink, 0);
-            selectingLink = Math.min(selectingLink, $allLinks.length - 1);
-            highlightCurrent($allLinks, selectingLink);
+            selectingLink = handleJK($allLinks, selectingLink, +1);
             break;
         case 75:    // 'K': Select the next above link.
-            selectingLink--;
-            selectingLink = Math.max(selectingLink, 0);
-            selectingLink = Math.min(selectingLink, $allLinks.length - 1);
-            highlightCurrent($allLinks, selectingLink);
+            selectingLink = handleJK($allLinks, selectingLink, -1);
             break;
         }
     });
