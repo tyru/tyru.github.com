@@ -1,10 +1,11 @@
 
+/* ======== default background & text colors ======== */
 body {
   background-color: #FFF;
   color: #000;
 }
 
-/* link colors */
+/* ======== link colors ======== */
 a { text-decoration: none; }
 a:link { color: #000; }
 a:visited { color: #700; }
@@ -14,45 +15,67 @@ a:active {  /* click */
   top: 1px;
 }
 
-#main_menu {
-  margin-top: 100px;
+/* ======== footer ======== */
+footer {
+  font-size: xx-small;
+  /* background-color: #aaa; */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(white, #aaa);
+  color: white;
+  padding-top: 50px;
 }
 
-dl#profile > dd > dl > dt {
+/* ======== #container-left, #container-right ======== */
+/* body >
+ * #container (clearfix) >
+ * #container-left,#container-right >
+ * section
+ */
+#container {
+  margin-left: 10px;
 }
-dl#profile > dd > dl > dd {
+#container-left {
+  float: left;
+  width: 400px;
+}
+#container-right {
+  float: left;
+  margin-left: 50px;
+}
+
+/* ======== #profile ======== */
+section#profile > dd > dl > dd {
   margin-bottom: 20px;
   margin-left: 30px;
 }
 
-#main_menu > dl.menu {
-  margin-top: 30px;
-  margin-left: 10px;
-  width: 500px;
-}
-
-#footer {
-  margin-top: 50px;
-  text-align: center;
-  font-size: x-small;
-}
-
-dl.menu > dt {
+/* ======== .menu ======== */
+.menu > h1 {
+  font-size: medium;
+  font-weight: normal;
   padding-bottom: 5px;
   margin-bottom: 10px;
-  font-size: large;
-  font-weight: bold;
   border-bottom: solid 1px rgba(0, 0, 0, .2);
 }
-dl.menu > dd {
+.menu > h2 {
+  font-size: small;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px rgba(0, 0, 0, .2);
+}
+.menu > dd {
   margin-left: 10px;
 }
 
-dl#links dd a,
-dl#old-content dd a {
+/* ======== .vertical-links ======== */
+.vertical-links a {
   display: block;
 }
 
+/* ======== #bg-icon ======== */
 #bg-icon {
   position: relative;
   left: 100px;
@@ -60,18 +83,25 @@ dl#old-content dd a {
   height: 500px;
   z-index: -1;
 }
-#bg-icon > * {
+#bg-icon > img {
   position: absolute;
   width: 500px;
   height: 500px;
   background-repeat: no-repeat;
   background-position: right top;
+
+  transition: opacity 0.6s linear;
+  -moz-transition: opacity 0.6s linear;
+  -webkit-transition: opacity 0.6s linear;
+  -o-transition: opacity 0.6s linear;
+  -ms-transition: opacity 0.6s linear;
 }
 
+/* ======== #links > .desc ======== */
 .desc {
   position: relative;
-  top: 5px;
-  left: 30px;
+  top: -43px;
+  left: 55px;
 }
 .desc * {
   position: absolute;
@@ -83,14 +113,7 @@ dl#old-content dd a {
   color: #aaa;
 }
 
-.trans-opacity-0_6 {
-  transition: opacity 0.6s linear;
-  -moz-transition: opacity 0.6s linear;
-  -webkit-transition: opacity 0.6s linear;
-  -o-transition: opacity 0.6s linear;
-  -ms-transition: opacity 0.6s linear;
-}
-
+/* ======== .invisible ======== */
 .invisible {
   opacity: 0;
   -webkit-opacity: 0;
@@ -99,4 +122,17 @@ dl#old-content dd a {
   filter: alpha(opacity=0);
   /* IE 8 */
   -ms-filter: "alpha(opacity=0)";
+}
+
+/* ======== .clearfix ======== */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
 }
