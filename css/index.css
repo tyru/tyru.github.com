@@ -62,10 +62,11 @@ section#profile > dd > dl > dd {
 }
 .menu > h2 {
   font-size: small;
-  font-weight: bold;
+  font-weight: normal;
   padding-bottom: 5px;
   margin-bottom: 10px;
   border-bottom: solid 1px rgba(0, 0, 0, .2);
+  color: #777;
 }
 .menu > dd {
   margin-left: 10px;
