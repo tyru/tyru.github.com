@@ -17,38 +17,21 @@ a:active {  /* click */
 
 /* ======== footer ======== */
 footer {
+  padding-top: 50px;
   font-size: xx-small;
   /* background-color: #aaa; */
-  width: 100%;
-  position: absolute;
-  bottom: 0;
   background: linear-gradient(white, #aaa);
   color: white;
-  padding-top: 50px;
 }
-
-/* ======== #container-left, #container-right ======== */
-/* body >
- * #container (clearfix) >
- * #container-left,#container-right >
- * section
- */
-#container {
-  margin-left: 10px;
-}
-#container-left {
-  float: left;
-  width: 400px;
-}
-#container-right {
-  float: left;
-  margin-left: 50px;
-}
-
-/* ======== #profile ======== */
-section#profile > dd > dl > dd {
-  margin-bottom: 20px;
-  margin-left: 30px;
+@media (min-width: 600px) {
+  /* If a device has enough space, show fixed footer */
+  footer {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 /* ======== .menu ======== */
@@ -135,17 +118,4 @@ a:link.selected-link {
 }
 a:visited.selected-link {
   color: white;
-}
-
-/* ======== .clearfix ======== */
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
-}
-.clearfix:after {
-  clear: both;
-}
-.clearfix {
-  *zoom: 1;
 }
