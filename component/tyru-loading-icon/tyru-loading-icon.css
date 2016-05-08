@@ -1,9 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-
-@keyframes icon-loading {
+@keyframes tyru-loading-icon {
   0% {
     transform: rotate(0deg);
   }
@@ -12,39 +7,39 @@
   }
 }
 
-.icon-loading-root {
+tyru-loading-icon .icon-loading-root {
   width: 75px;
   height: 75px;
   padding-left: 25px;
   display: inline-block;
   position: relative;
 }
-.icon-loading {
+tyru-loading-icon .icon-loading {
   padding-top: 50px;
   font-size: 25px;
   position: absolute;
 }
-.icon-loading-1 {
-  animation: 2s linear 0.250s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-1 {
+  animation: 2s linear 0.250s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-2 {
-  animation: 2s linear 0.500s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-2 {
+  animation: 2s linear 0.500s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-3 {
-  animation: 2s linear 0.750s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-3 {
+  animation: 2s linear 0.750s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-4 {
-  animation: 2s linear 1s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-4 {
+  animation: 2s linear 1s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-5 {
-  animation: 2s linear 1.250s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-5 {
+  animation: 2s linear 1.250s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-6 {
-  animation: 2s linear 1.500s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-6 {
+  animation: 2s linear 1.500s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-7 {
-  animation: 2s linear 1.750s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-7 {
+  animation: 2s linear 1.750s infinite normal none running tyru-loading-icon;
 }
-.icon-loading-8 {
-  animation: 2s linear 2s infinite normal none running icon-loading;
+tyru-loading-icon .icon-loading-8 {
+  animation: 2s linear 2s infinite normal none running tyru-loading-icon;
 }

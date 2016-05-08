@@ -1,0 +1,21 @@
+.playground {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.zure tyru-loading-icon .icon-loading-root {
+  border: 1px solid black;
+}
+
+.title {
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ccc;
+}
+.body {
+  display: block;
+  margin-left: 20px;
+}
+.code {
+  display: inline-block;
+}
