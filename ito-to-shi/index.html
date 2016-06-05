@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>糸通し</title>
+  </head>
+  <body onload='ItoToShi.init()'>
+    <svg id='screen'
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xml:space="preserve"></svg>
+
+    <button onclick='ItoToShi.enableFullscreen(document.getElementById("screen"))'>フルスクリーン</button>
+    <button onclick='ItoToShi.startStopContinue()'>Start/Stop/Continue</button>
+
+    <style>
+      #screen {
+        display: block;
+        margin-bottom: 15px;
+        border: solid 1px black;
+      }
+      .disable-select {
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+    </style>
+    <script src='d3-v3.5.17/d3.js'></script>
+    <script src='itotoshi.js'></script>
+  </body>
+</html>
