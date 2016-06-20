@@ -36,6 +36,7 @@ window.onload = (function() {
     showDescAndIconOnHover('hatebu', 'hatebu-bg-icon');
     showDescAndIconOnHover('hatenablog', 'hatenablog-bg-icon');
     showDescAndIconOnHover('twitter', 'twitter-bg-icon');
+    showDescAndIconOnHover('soundcloud', 'soundcloud-bg-icon');
     showDescAndIconOnHover('tumblr-tyru', 'tumblr-bg-icon');
     showDescAndIconOnHover('tumblr-inthesea', 'tumblr-bg-icon');
     showDescAndIconOnHover('vimorg', 'vimorg-bg-icon');
