@@ -34,9 +34,14 @@ window.onload = (function() {
     // * Show descriptions on mouseover.
     [
       'github', 'hatebu', 'hatenablog', 'twitter', 'soundcloud',
-      'tumblr-tyru', 'tumblr-inthesea', 'vimorg', 'flickr'
+      ['tumblr-tyru', 'tumblr-bg-icon'], ['tumblr-inthesea', 'tumblr-bg-icon'],
+      'vimorg', 'flickr'
     ].map(function (linkId) {
-      showDescAndIconOnHover(linkId, linkId + '-bg-icon');
+      if (Array.isArray(linkId)) {
+        showDescAndIconOnHover(linkId[0], linkId[1]);
+      } else {
+        showDescAndIconOnHover(linkId, linkId + '-bg-icon');
+      }
     });
 
     // Vi-like keybindings.
