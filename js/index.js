@@ -32,14 +32,12 @@ window.onload = (function() {
     // On mouseover/mouseout.
     // * Show background images on mouseover.
     // * Show descriptions on mouseover.
-    showDescAndIconOnHover('github', 'github-bg-icon');
-    showDescAndIconOnHover('hatebu', 'hatebu-bg-icon');
-    showDescAndIconOnHover('hatenablog', 'hatenablog-bg-icon');
-    showDescAndIconOnHover('twitter', 'twitter-bg-icon');
-    showDescAndIconOnHover('soundcloud', 'soundcloud-bg-icon');
-    showDescAndIconOnHover('tumblr-tyru', 'tumblr-bg-icon');
-    showDescAndIconOnHover('tumblr-inthesea', 'tumblr-bg-icon');
-    showDescAndIconOnHover('vimorg', 'vimorg-bg-icon');
+    [
+      'github', 'hatebu', 'hatenablog', 'twitter', 'soundcloud',
+      'tumblr-tyru', 'tumblr-inthesea', 'vimorg', 'flickr'
+    ].map(function (linkId) {
+      showDescAndIconOnHover(linkId, linkId + '-bg-icon');
+    });
 
     // Vi-like keybindings.
     // Move across <a> links.
