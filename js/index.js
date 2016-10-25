@@ -35,7 +35,7 @@ window.onload = (function() {
     [
       'github', 'hatebu', 'hatenablog', 'twitter', 'soundcloud',
       ['tumblr-tyru', 'tumblr-bg-icon'], ['tumblr-inthesea', 'tumblr-bg-icon'],
-      'vimorg', 'flickr'
+      'vimorg', 'flickr', 'amazon'
     ].map(function (linkId) {
       if (Array.isArray(linkId)) {
         showDescAndIconOnHover(linkId[0], linkId[1]);
