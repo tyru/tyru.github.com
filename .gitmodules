@@ -1,3 +1,0 @@
-[submodule "editor.js"]
-	path = editor.js
-	url = git://github.com/tyru/editor.js
