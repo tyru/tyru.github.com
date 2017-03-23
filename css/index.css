@@ -15,25 +15,6 @@ a:active {  /* click */
   top: 1px;
 }
 
-/* ======== footer ======== */
-footer {
-  padding-top: 50px;
-  font-size: xx-small;
-  /* background-color: #aaa; */
-  background: linear-gradient(white, #aaa);
-  color: white;
-}
-@media (min-width: 600px) {
-  /* fixed footer */
-  footer {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-  }
-}
-
 /* ======== .menu ======== */
 .menu > h1 {
   font-size: medium;
