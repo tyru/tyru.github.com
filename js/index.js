@@ -12,7 +12,9 @@ window.onload = (function() {
             if (window.matchMedia(MOBILE_MEDIA).matches) {
                 return;
             }
-            $bgImg.classList.remove('invisible');
+            if ($bgImg) {
+                $bgImg.classList.remove('invisible');
+            }
             $linkDesc.classList.remove('invisible');
             return false;
         });
@@ -21,7 +23,9 @@ window.onload = (function() {
                 return;
             }
             $linkDesc.classList.add('invisible');
-            $bgImg.classList.add('invisible');
+            if ($bgImg) {
+                $bgImg.classList.add('invisible');
+            }
             return false;
         });
 
@@ -33,7 +37,7 @@ window.onload = (function() {
     // * Show background images on mouseover.
     // * Show descriptions on mouseover.
     [
-      'github', 'hatebu', 'hatenablog', 'twitter', 'soundcloud',
+      'github', ['github-vim-plugins', 'vimorg-bg-icon'], 'hatebu', 'hatenablog', 'twitter', 'soundcloud',
       ['tumblr-tyru', 'tumblr-bg-icon'], ['tumblr-inthesea', 'tumblr-bg-icon'],
       'vimorg', 'flickr', 'amazon'
     ].map(function (linkId) {
